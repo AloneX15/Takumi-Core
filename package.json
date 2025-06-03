@@ -1,0 +1,99 @@
+{
+  "name": "takumi-core",
+  "version": "1.0.0",
+  "description": "A library containing core mechanisms for Takumi Launcher",
+  "main": "dist/index.js",
+  "scripts": {
+    "clean": "rimraf dist",
+    "tsc": "tsc",
+    "build": "npm run clean && npm run tsc",
+    "lint": "eslint .",
+    "test": "cross-env TS_NODE_PROJECT='./tsconfig.test.json' NODE_ENV=test mocha -r ts-node/register --recursive test/**/**/*.ts",
+    "bl": "npm run build && npm link",
+    "prepack": "npm run build"
+  },
+  "exports": {
+    ".": "./dist/index.js",
+    "./common": "./dist/common.js",
+    "./dl": "./dist/dl.js",
+    "./java": "./dist/java.js",
+    "./microsoft": "./dist/microsoft.js",
+    "./mojang": "./dist/mojang.js"
+  },
+  "typesVersions": {
+    "*": {
+      ".": [
+        "./dist/index.d.ts"
+      ],
+      "common": [
+        "./dist/common.d.ts"
+      ],
+      "dl": [
+        "./dist/dl.d.ts"
+      ],
+      "java": [
+        "./dist/java.d.ts"
+      ],
+      "microsoft": [
+        "./dist/microsoft.d.ts"
+      ],
+      "mojang": [
+        "./dist/mojang.d.ts"
+      ]
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shisuiicaro/hasta-core.git"
+  },
+  "keywords": [
+    "takumi-launcher",
+    "helios-core",
+    "minecraft-launcher"
+  ],
+  "author": "AloneX",
+  "license": " LGPL-3.0-only",
+  "bugs": {
+    "url": "https://github.com/dscalzi/helios-core/issues"
+  },
+  "homepage": "https://github.com/dscalzi/helios-core#readme",
+  "devDependencies": {
+    "@stylistic/eslint-plugin-ts": "^3.1.0",
+    "@types/chai": "^4.3.20",
+    "@types/chai-as-promised": "^7.1.8",
+    "@types/fs-extra": "^11.0.4",
+    "@types/luxon": "^3.4.2",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^20.17.19",
+    "@types/semver": "^7.5.8",
+    "@types/tar-fs": "^2.0.4",
+    "@types/triple-beam": "^1.3.5",
+    "@types/winreg": "^1.2.36",
+    "chai": "^4.4.1",
+    "chai-as-promised": "^7.1.1",
+    "cross-env": "^7.0.3",
+    "eslint": "^9.21.0",
+    "helios-distribution-types": "^1.3.0",
+    "mocha": "^10.8.2",
+    "nock": "^14.0.1",
+    "rimraf": "^6.0.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.24.1"
+  },
+  "dependencies": {
+    "fastq": "^1.19.0",
+    "fs-extra": "^11.3.0",
+    "got": "^11.8.6",
+    "luxon": "^3.5.0",
+    "node-stream-zip": "^1.15.0",
+    "semver": "^7.7.1",
+    "tar-fs": "^3.0.8",
+    "triple-beam": "^1.4.1",
+    "winreg": "^1.2.5",
+    "winston": "^3.17.0"
+  },
+  "files": [
+    "dist"
+  ]
+}
