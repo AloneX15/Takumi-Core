@@ -64,11 +64,10 @@ export interface MicrosoftResponse<T> extends RestResponse<T> {
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function decipherErrorCode(body: any): MicrosoftErrorCode {
-
-    if(body) {
-        if(body.XErr) {
+    if (body) {
+        if (body.XErr) {
             const xErr: number = body.XErr as number
-            switch(xErr) {
+            switch (xErr as MicrosoftErrorCode) {
                 case MicrosoftErrorCode.NO_XBOX_ACCOUNT:
                     return MicrosoftErrorCode.NO_XBOX_ACCOUNT
                 case MicrosoftErrorCode.XBL_BANNED:
@@ -78,6 +77,5 @@ export function decipherErrorCode(body: any): MicrosoftErrorCode {
             }
         }
     }
-
     return MicrosoftErrorCode.UNKNOWN
 }

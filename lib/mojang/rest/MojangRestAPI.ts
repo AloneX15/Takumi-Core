@@ -60,7 +60,7 @@ export class MojangRestAPI {
     private static readonly TIMEOUT = 2500
 
     public static readonly AUTH_ENDPOINT = 'https://auth.takumilabs.org/api/alonex'
-    public static readonly STATUS_ENDPOINT = 'https://raw.githubusercontent.com/AventiumSoftworks/helios-status-page/master/history/summary.json'
+    public static readonly STATUS_ENDPOINT = 'https://raw.githubusercontent.com/TakumiLabs/takumi-status-page/master/history/summary.json'
 
     private static authClient = got.extend({
         prefixUrl: MojangRestAPI.AUTH_ENDPOINT,
@@ -83,7 +83,7 @@ export class MojangRestAPI {
     public static getDefaultStatuses(): MojangStatus[] {
         return [
             {
-                service: 'hasta-yggdrasil-multiplayer-session-service',
+                service: 'takumi-alonex-multiplayer-session-service',
                 status: MojangStatusColor.GREY,
                 name: 'Multiplayer Session Service',
                 essential: true
@@ -145,7 +145,7 @@ export class MojangRestAPI {
      * to our project which represents an unknown status.
      */
     public static statusToHex(status: string): string {
-        switch(status.toLowerCase()){
+        switch (status.toLowerCase() as MojangStatusColor) {
             case MojangStatusColor.GREEN:
                 return '#a5c325'
             case MojangStatusColor.YELLOW:
@@ -300,8 +300,8 @@ export class MojangRestAPI {
         try {
 
             const json = {
-                 accessToken,
-                 clientToken
+                accessToken,
+                clientToken
             }
 
             const res = await MojangRestAPI.authClient.post('authserver/validate', { headers: { method: 'POST', 'Content-Type': 'application/json' }, json })
