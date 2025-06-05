@@ -111,14 +111,18 @@ describe('JavaGuard', () => {
         }
     })
 
-    it.skip('Win32 Registry Keys', async () => {
+    const isWindows = process.platform === 'win32';
 
-        const res = await (new Win32RegistryJavaDiscoverer()).discover()
+    (isWindows ? it : it.skip)('Win32 Registry Keys', async () => {
+        if (isWindows) {
+            const res = await (new Win32RegistryJavaDiscoverer()).discover()
 
-        for(const file of res) {
-            console.log(file)
+            for(const file of res) {
+                console.log(file)
+            }
+        } else {
+            console.log('Omitiendo el test de Win32 Registry Keys en plataformas que no son Windows');
         }
-
     })
 
 })
